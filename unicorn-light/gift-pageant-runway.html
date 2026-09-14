@@ -21,6 +21,8 @@
   .wrap { max-width: 780px; margin: 0 auto; padding: 44px 16px 90px; }
   header { text-align: center; margin-bottom: 4px; }
   .kicker { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 14px; }
+  .back-link { display: inline-block; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cobalt); text-decoration: none; margin-bottom: 18px; opacity: 0.75; }
+  .back-link:hover { opacity: 1; text-decoration: underline; }
   h1 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 2rem; letter-spacing: -0.01em; line-height: 1.15; margin: 0 0 14px; }
   .rule { width: 64px; height: 2px; background: var(--gold); margin: 0 auto 18px; }
   .deck { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.98rem; color: var(--cobalt); max-width: 42ch; margin: 0 auto; line-height: 1.5; }
@@ -86,7 +88,7 @@
   .crown-btn { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.05rem; background: var(--cream); color: var(--navy); border: 1.5px solid var(--gold-deep); border-radius: 999px; padding: 13px 32px; cursor: pointer; }
   .crown-btn:hover { background: var(--gold-deep); color: var(--cream); }
 
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,39,68,0.9); z-index: 100; align-items: center; justify-content: center; padding: 24px; }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,39,68,0.9); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
   .modal-overlay.show { display: flex; }
   .modal { background: var(--cream); border-radius: 6px; max-width: 400px; width: 100%; padding: 36px 28px 30px; text-align: center; position: relative; max-height: 88vh; overflow-y: auto; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5); }
   .crown-icon { font-size: 1.6rem; color: var(--gold-deep); margin-bottom: 4px; }
@@ -111,6 +113,7 @@
 
 <div class="wrap">
   <header>
+    <a class="back-link" href="interactive-unicorn-post.html">← Back to the post</a>
     <div class="kicker">The SIA Brat Studio Presents</div>
     <h1>The Great Singapore<br>Birthday Gift Pageant</h1>
     <div class="rule"></div>
