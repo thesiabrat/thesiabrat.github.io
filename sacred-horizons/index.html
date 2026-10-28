@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacred Horizons</title>
+<meta name="description" content="Sacred Horizons: The Japan I thought I knew. An illustrated abridged edition from The SIA Brat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<!--
+  EDITABLE LINKS
+  Essay link     – published Substack essay (goes live 28 Oct 2026, 8pm).
+  Offer links    – public CruiseAway itinerary only. The subscriber A$7,699 booking link lives in the Substack article and must never be added here.
+-->
+<style>
+  :root {
+    /* One continuous watercolour paper behind the whole page, matching the paper the illustrations are painted on. */
+    --paper: #FDE7C4;
+    --navy: #1F2A44;
+    --navy-soft: #3A4562;
+    --gold: #C18D3D;
+    --gold-deep: #A7762C;
+    --terracotta: #A9573F;
+    /* restrained rainbow: dusty, never neon */
+    --r1: #B9655A; --r2: #C99A4E; --r3: #8E9E6B; --r4: #5F8E8C; --r5: #5B6C9C; --r6: #8C6C95;
+    --spectrum: linear-gradient(90deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6));
+    --read: 660px;
+    --art: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: url("images/paper-tile.jpg");
+    background-size: 2160px auto;
+    background-repeat: repeat;
+    color: var(--navy);
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--terracotta); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 3px;
+  }
+  .skip {
+    position: absolute; left: 16px; top: -60px; background: var(--navy); color: var(--paper);
+    padding: 8px 14px; border-radius: 4px; text-decoration: none; z-index: 10;
+  }
+  .skip:focus { top: 12px; }
+
+  /* ---------- top link + masthead ---------- */
+  .topline {
+    max-width: var(--read); margin: 0 auto; padding: 22px 20px 0; text-align: center;
+  }
+  .read-first {
+    font-style: italic; font-size: 0.92rem; color: var(--terracotta);
+    text-decoration: none; border-bottom: 1px solid rgba(169, 87, 63, 0.45);
+    padding-bottom: 1px;
+  }
+  .read-first:hover { border-bottom-color: var(--terracotta); }
+
+  header.masthead {
+    max-width: var(--read); margin: 0 auto; padding: 54px 20px 18px; text-align: center;
+  }
+  .imprint {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold-deep); margin: 0 0 18px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500;
+    font-size: clamp(2.3rem, 7vw, 3.4rem); line-height: 1.02; letter-spacing: 0.02em;
+    margin: 0; color: var(--navy);
+  }
+  .subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500;
+    font-size: clamp(1.2rem, 3.6vw, 1.45rem); color: var(--navy-soft); margin: 10px 0 0;
+  }
+  .horizon {
+    width: 132px; height: 2px; margin: 26px auto 0; border-radius: 2px;
+    background: var(--spectrum); opacity: 0.75;
+  }
+  .edition {
+    font-size: 0.82rem; letter-spacing: 0.04em; color: var(--navy-soft); opacity: 0.85;
+    margin: 14px 0 0;
+  }
+
+  /* ---------- progress marks ---------- */
+  .marks {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    display: flex; justify-content: center; gap: 4px;
+    padding: 10px 12px 8px;
+    background: rgba(253, 231, 196, 0.9);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    transition: opacity .4s ease;
+  }
+  .marks a {
+    display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+    font-size: 0.72rem; font-variant-numeric: lining-nums; color: var(--navy-soft);
+    text-decoration: none; position: relative; transition: color .3s ease;
+  }
+  .marks a::after {
+    content: ""; position: absolute; left: 50%; bottom: 2px; width: 4px; height: 4px;
+    margin-left: -2px; border-radius: 50%; background: var(--hue); opacity: 0.35;
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .marks a.current { color: var(--navy); font-weight: 500; }
+  .marks a.current::after { opacity: 1; transform: scale(1.5); }
+  .marks a:nth-child(1) { --hue: var(--r1); } .marks a:nth-child(2) { --hue: var(--r2); }
+  .marks a:nth-child(3) { --hue: var(--r1); } .marks a:nth-child(4) { --hue: var(--r2); }
+  .marks a:nth-child(5) { --hue: var(--r3); } .marks a:nth-child(6) { --hue: var(--r5); }
+  .marks a:nth-child(7) { --hue: var(--r4); } .marks a:nth-child(8) { --hue: var(--r5); }
+  .marks a:nth-child(9) { --hue: var(--r6); }
+
+  /* ---------- scenes ---------- */
+  main { padding-bottom: 40px; }
+  .scene { padding: 64px 0 18px; scroll-margin-top: 40px; }
+  .scene-head {
+    max-width: var(--read); margin: 0 auto; padding: 0 20px; text-align: center;
+  }
+  .num {
+    display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 0.8rem; letter-spacing: 0.3em; color: var(--gold-deep);
+  }
+  .num::before, .num::after {
+    content: ""; display: inline-block; vertical-align: middle;
+    width: 26px; height: 1px; background: var(--gold); opacity: 0.55; margin: 0 12px;
+  }
+  .scene h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500;
+    font-size: clamp(1.55rem, 4.4vw, 2.05rem); line-height: 1.15;
+    margin: 8px 0 0; color: var(--navy);
+  }
+
+  /* Artwork is shown exactly as supplied: no crop, mask, radius, border, fade or filter. */
+  figure.art {
+    max-width: var(--art); margin: 22px auto 0; padding: 0 20px;
+  }
+  figure.art img {
+    display: block; width: 100%; height: auto; object-fit: contain;
+  }
+
+  .story {
+    max-width: var(--read); margin: 14px auto 0; padding: 0 20px;
+    font-size: 1.14rem; line-height: 1.72; color: var(--navy);
+  }
+  .story p { margin: 0 0 1em; }
+
+  .divider {
+    display: flex; justify-content: center; gap: 7px; margin: 30px 0 0;
+  }
+  .divider i { width: 4px; height: 4px; border-radius: 50%; opacity: 0.55; }
+  .divider i:nth-child(1) { background: var(--r1); } .divider i:nth-child(2) { background: var(--r2); }
+  .divider i:nth-child(3) { background: var(--gold); width: 5px; height: 5px; opacity: .8; }
+  .divider i:nth-child(4) { background: var(--r4); } .divider i:nth-child(5) { background: var(--r5); }
+
+  /* ---------- closing + offer ---------- */
+  .closing {
+    max-width: var(--read); margin: 30px auto 0; padding: 0 20px; text-align: center;
+  }
+  .btn {
+    display: inline-block; padding: 13px 26px; border-radius: 999px; text-decoration: none;
+    font-style: italic; font-size: 1.02rem; line-height: 1.3;
+    transition: transform .2s ease, background-color .2s ease, color .2s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: #CB9A4C; }
+  .btn-line { border: 1px solid var(--navy); color: var(--navy); }
+  .btn-line:hover { background: var(--navy); color: var(--paper); }
+
+  .offer {
+    max-width: 720px; margin: 64px auto 0; padding: 0 20px;
+  }
+  .offer-inner {
+    position: relative; padding: 40px 30px 34px;
+    border-top: 1px solid rgba(193, 141, 61, 0.55);
+    border-bottom: 1px solid rgba(193, 141, 61, 0.55);
+    text-align: center;
+  }
+  .offer-inner::before {
+    content: ""; position: absolute; top: -2px; left: 50%; width: 120px; height: 3px;
+    margin-left: -60px; border-radius: 2px; background: var(--spectrum); opacity: 0.8;
+  }
+  .offer .kicker {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-deep);
+    margin: 0;
+  }
+  .offer h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500;
+    font-size: clamp(1.7rem, 5vw, 2.25rem); line-height: 1.1; margin: 10px 0 18px;
+  }
+  .facts {
+    list-style: none; margin: 0 auto 22px; padding: 0; max-width: 560px; text-align: left;
+    font-size: 1rem; line-height: 1.6;
+  }
+  .facts li { padding: 9px 0 9px 22px; position: relative; border-bottom: 1px dotted rgba(31, 42, 68, 0.18); }
+  .facts li:last-child { border-bottom: 0; }
+  .facts li::before {
+    content: "✦"; position: absolute; left: 0; top: 10px; font-size: 0.7rem; color: var(--gold);
+  }
+  .facts strong { font-weight: 500; }
+  /* Two quiet routes out of the offer: the public itinerary, and the subscriber rate via the full story. */
+  .paths {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 10px auto 0; max-width: 620px;
+    text-align: center;
+  }
+  .path { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 6px 22px; }
+  .path + .path { border-left: 1px solid rgba(193, 141, 61, 0.45); }
+  .path-q {
+    margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500;
+    font-size: 1.22rem; line-height: 1.3; color: var(--navy); text-wrap: balance;
+  }
+  .path .btn { font-size: 0.95rem; padding: 11px 20px; }
+  .path-text { margin: 0; font-size: 0.98rem; line-height: 1.6; }
+  .path-text a {
+    color: var(--terracotta); font-style: italic; text-decoration: none;
+    border-bottom: 1px solid rgba(169, 87, 63, 0.45);
+  }
+  .path-text a:hover { border-bottom-color: var(--terracotta); }
+  .path-note { margin: 0; font-size: 0.86rem; line-height: 1.55; color: var(--navy-soft); }
+  @media (max-width: 600px) {
+    .paths { grid-template-columns: 1fr; }
+    .path { padding: 18px 0; }
+    .path + .path { border-left: 0; border-top: 1px solid rgba(193, 141, 61, 0.45); }
+  }
+  .fine { font-size: 0.86rem; line-height: 1.6; color: var(--navy-soft); margin: 18px auto 0; max-width: 520px; }
+  .disclosure {
+    font-style: italic; font-size: 0.95rem; line-height: 1.6; color: var(--navy-soft);
+    max-width: 520px; margin: 22px auto 0;
+  }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
+
+  footer {
+    text-align: center; padding: 56px 20px 48px; font-size: 0.8rem; color: var(--navy-soft);
+    letter-spacing: 0.06em;
+  }
+  footer a { color: var(--navy-soft); }
+
+  /* ---------- gentle reveal (only when JS is running and motion is welcome) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal.pending { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
+    .js .reveal.pending.in-view { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .marks a, .marks a::after { transition: none; }
+  }
+
+  /* ---------- mobile ---------- */
+  @media (max-width: 600px) {
+    body { background-size: 1080px auto; }
+    header.masthead { padding-top: 40px; }
+    .scene { padding-top: 48px; }
+    figure.art { padding: 0 6px; margin-top: 18px; }
+    .story { font-size: 1.06rem; line-height: 1.68; }
+    .marks { gap: 0; padding: 8px 6px 6px; }
+    .marks a { width: 28px; height: 28px; }
+    .num::before, .num::after { width: 18px; margin: 0 9px; }
+    .offer-inner { padding: 34px 6px 28px; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#scene-1">Skip to the story</a>
+
+<div class="opening">
+<div class="topline">
+  <!-- TEMPORARY: draft URL. Replace with the published Substack essay URL -->
+  <a class="read-first" href="https://thesiabrat.substack.com/p/japan-cruise-tour-mythology-dreams-self-psychic-abilities">Haven’t read the post yet? Start there →</a>
+</div>
+
+<header class="masthead">
+  <p class="imprint">The SIA Brat Studio</p>
+  <h1>Sacred Horizons</h1>
+  <p class="subtitle">The Japan I thought I knew</p>
+  <div class="horizon" aria-hidden="true"></div>
+  <p class="edition">An illustrated abridged edition</p>
+</header>
+</div>
+
+<nav class="marks" aria-label="Scenes">
+  <a href="#scene-1" aria-label="Scene 1: The Machine of Many Answers">1</a>
+  <a href="#scene-2" aria-label="Scene 2: Mother of Dragons">2</a>
+  <a href="#scene-3" aria-label="Scene 3: One Belief, Two Worlds">3</a>
+  <a href="#scene-4" aria-label="Scene 4: The Japan I Have Collected">4</a>
+  <a href="#scene-5" aria-label="Scene 5: The Bell, Frog and Turtle">5</a>
+  <a href="#scene-6" aria-label="Scene 6: The Dream That Followed Me Home">6</a>
+  <a href="#scene-7" aria-label="Scene 7: None of the Above">7</a>
+  <a href="#scene-8" aria-label="Scene 8: If You Could Have One Superpower?">8</a>
+  <a href="#scene-9" aria-label="Scene 9: The Journey">9</a>
+</nav>
+
+<main>
+
+  <section class="scene" id="scene-1" aria-labelledby="h-1">
+    <div class="scene-head reveal"><span class="num">01</span><h2 id="h-1">The Machine of Many Answers</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/01_fortune_telling_machine.webp" class="cutout"
+           style="margin: -7.73% 0 -11.81%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1448" height="1086"
+           fetchpriority="high"
+           alt="Mae in a lamplit study full of fortune-telling devices: zodiac wheels, tarot cards, a palm model and a long scroll of plans running from A to Z.">
+    </figure>
+    <div class="story reveal">
+      <p>I make Plans A to Z because I hate uncertainty. Which probably explains my fascination with fortune tellers.</p>
+      <p>A bird in Hong Kong. Fortune sticks in Taiwan. Rice in Brisbane. Tarot, numerology and palm reading. I’ve tried rather a lot of ways to find out what might happen next.</p>
+      <p>And here’s the funny thing. I’m Catholic.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-2" aria-labelledby="h-2">
+    <div class="scene-head reveal"><span class="num">02</span><h2 id="h-2">Mother of Dragons: The Zodiac Wheel</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/02_zodiac_wheel_twin_dragons.webp" class="cutout"
+           style="margin: -8.36% 0 -11.88%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1448" height="1086" loading="lazy" decoding="async"
+           alt="Mae holds a baby dragon while a second dragon emerges from a great Chinese zodiac wheel.">
+    </figure>
+    <div class="story reveal">
+      <p>And yes, my curiosity once became rather practical.</p>
+      <p>When we were planning our family, I actually consulted a Chinese zodiac compatibility chart. It influenced how I thought about the timing of our next child.</p>
+      <p>All because a Catholic friend declined to become my son’s godmother over their supposedly incompatible zodiac signs.</p>
+      <p>Erm. Yes.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-3" aria-labelledby="h-3">
+    <div class="scene-head reveal"><span class="num">03</span><h2 id="h-3">One Belief, Two Worlds: The Fire Horse</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/03_fire_horse.webp" class="cutout"
+           style="margin: -9.12% 0 -9.67%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1448" height="1086" loading="lazy" decoding="async"
+           alt="Mae, a small dragon on each shoulder, watches a horse made of flame and calendar pages gallop across a lantern-lit night sky.">
+    </figure>
+    <div class="story reveal">
+      <p>I ended up with twin Dragons. Call me Khaleesi.</p>
+      <p>Actually, don’t.</p>
+      <p>Then I discovered that in Japan, an old superstition surrounding girls born in the Year of the Fire Horse had influenced family-planning decisions on a national scale. Births fell dramatically in 1966.</p>
+      <p>The Fire Horse returned in 2026.</p>
+      <p>One belief. Very different consequences.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-4" aria-labelledby="h-4">
+    <div class="scene-head reveal"><span class="num">04</span><h2 id="h-4">The Japan I Have Collected</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/04_sake_river_japan_memories.webp" class="cutout"
+           style="margin: -8.84% 0 -11.46%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1448" height="1086" loading="lazy" decoding="async"
+           alt="A river of sake pours from a bottle marked 酒 and winds between remembered scenes of Japan: city streets, friends at Disneyland, a potter’s studio, fireflies over rice paddies and an onsen.">
+    </figure>
+    <div class="story reveal">
+      <p>Japan is the country I’ve visited more than any other.</p>
+      <p>There were summer streets full of businessmen in suits while I was melting in spaghetti straps, friends at Disneyland, a working potter in Omagari, fireflies over rice paddies and my first onsen.</p>
+      <p>And sake. Let’s just say I haven’t touched it since a memorable night during that homestay.</p>
+      <p>Then I came across a rather unusual Japan cruise.</p>
+      <p>I initially thought astrology and fortune-telling were part of the programme.</p>
+      <p>I was wrong.</p>
+      <p>But the travel editor in me couldn’t resist investigating. I studied the itinerary, looked into the speakers and started pulling the whole thing apart.</p>
+      <p>And somewhere along the way, I fell for the very hook I spend my working hours trying to write.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-5" aria-labelledby="h-5">
+    <div class="scene-head reveal"><span class="num">05</span><h2 id="h-5">The Bell, Frog and Turtle</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/05_summer_shrine_frog_turtle_bell.webp" class="cutout"
+           style="margin: -5.59% 0 -5.32%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1448" height="1086" loading="lazy" decoding="async"
+           alt="On a green summer shrine path, Mae reaches for the bell rope between a stone frog and a stone turtle.">
+    </figure>
+    <div class="story reveal">
+      <p>During a homestay in Kawachinagano, my hosts brought me to what I think was a Shinto shrine.</p>
+      <p>I remember a frog and a turtle along the pathway. Only later did I learn that frogs are often associated with returning safely, while turtles symbolise longevity.</p>
+      <p>Were those the intended meanings there? I haven’t the faintest idea. But it made me wonder: how many stories have I walked past in Japan without realising?</p>
+      <p>That’s why Tracey Ash’s exploration of Japanese mythology and spiritual traditions interests me.</p>
+      <p>My question for Tracey: How much of Japan’s ancient mythology still influences everyday life today?</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-6" aria-labelledby="h-6">
+    <div class="scene-head reveal"><span class="num">06</span><h2 id="h-6">The Dream That Followed Me Home</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/06_dream_one_tear.webp" class="cutout"
+           style="margin: -8.15% 0 -9.25%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1448" height="1086" loading="lazy" decoding="async"
+           alt="Mae sits up in bed with a single tear, as a night-time labyrinth of nested doorways and stairs unfolds behind her.">
+    </figure>
+    <div class="story reveal">
+      <p>I’ve had dreams so vivid that I’ve woken up sobbing, convinced for a moment that what I’d dreamt really happened.</p>
+      <p>Inception, anyone?</p>
+      <p>How can something that never actually happened leave me feeling as though it did?</p>
+      <p>Samantha Treasure explores dreams, out-of-body experiences and Eastern shamanism. Of the four speakers, her subject might interest me most.</p>
+      <p>My question for Samantha: Are dreams trying to tell us something, or are we the ones giving them meaning?</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-7" aria-labelledby="h-7">
+    <div class="scene-head reveal"><span class="num">07</span><h2 id="h-7">None of the Above: It Depends</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/07_enneagram_it_depends.webp" class="cutout"
+           style="margin: -1.14% 0 -1.44%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1672" height="941" loading="lazy" decoding="async"
+           alt="Under a banner asking “Who are you?”, Mae walks past four lettered doors towards a fifth, brighter door marked “It depends”.">
+    </figure>
+    <div class="story reveal">
+      <p>Who am I?</p>
+      <p>I’ve asked that question before, including on Substack. And I’ve taken personality tests, although I can’t remember the results.</p>
+      <p>But here’s what bothers me.</p>
+      <p>What if my answer isn’t A, B, C or D?<br>What if it’s it depends?</p>
+      <p>My Substack series, Box Too Small, is where I explore things I’ve read that leave me with far too much to say. And here I am, wondering whether nine personality types could possibly explain the complexity of who we are.</p>
+      <p>Which is why Peter Maloney’s Enneagram session caught my attention.</p>
+      <p>My question for Peter: How accurately can a personality framework describe someone who doesn’t always fit the available answers?</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-8" aria-labelledby="h-8">
+    <div class="scene-head reveal"><span class="num">08</span><h2 id="h-8">If You Could Have One Superpower?</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/08_one_power.webp" class="cutout"
+           style="margin: -0.33% 0 -0.40%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1500" height="844" loading="lazy" decoding="async"
+           alt="In a magical attic inspired by Charmed, Mae holds the Book of Shadows while four glowing visions reveal different abilities: freezing time, moving objects, seeing the future and orbing towards San Francisco’s Golden Gate Bridge.">
+    </figure>
+    <div class="story reveal">
+      <p>Kerrie Erwin’s session explores psychic abilities and recognising the powers within ourselves.</p>
+      <p>Naturally, my mind went straight to Charmed. LOL.</p>
+      <p>Piper was always my favourite. And you’d think I’d want Phoebe’s premonitions, given my love of fortune tellers. Except knowing the future isn’t the same as being able to change it.</p>
+      <p>Instead, I’d choose Paige’s teleportation. Imagine travelling anywhere without airports, queues or flight delays!</p>
+      <p>I guess what I really want isn’t the ability to predict the future. It’s the freedom to decide where I go next.</p>
+      <p>My question for Kerrie: How do we distinguish intuition, personal belief and abilities we might actually be able to develop?</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene-9" aria-labelledby="h-9">
+    <div class="scene-head reveal"><span class="num">09</span><h2 id="h-9">The Journey: Land and Sea</h2></div>
+    <figure class="art reveal">
+      <img src="images/cutout/09_japan_spring_cruise_land_sea.webp" class="cutout"
+           style="margin: -8.91% 0 -11.74%;"
+           sizes="(max-width: 1160px) 100vw, 1080px" width="1448" height="1086" loading="lazy" decoding="async"
+           alt="Mae stands at a ship’s rail in a spring harbour lined with cherry blossom, Mount Fuji beyond and small vignettes of belief, dreams, a mirror and a compass in the sky.">
+    </figure>
+    <div class="story reveal">
+      <p>Four speakers. Four questions.</p>
+      <p>Why do cultures believe what they believe?<br>What are our dreams trying to tell us?<br>Can a personality framework explain who we are?<br>And how do we know what abilities lie within us?</p>
+      <p>Different subjects, but questions I’ve found myself wondering about for years. And somehow, they’ve all come together on a journey through Japan by land and sea.</p>
+      <p>I’ve travelled extensively around Japan, but always by land. If time and money were no object, I’d be seriously tempted.</p>
+    </div>
+    <div class="divider" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <div class="closing reveal">
+    <a class="btn btn-line" href="https://thesiabrat.substack.com/p/japan-cruise-tour-mythology-dreams-self-psychic-abilities">Read the full essay on Substack →</a>
+  </div>
+
+  <aside class="offer reveal" aria-labelledby="offer-title">
+    <div class="offer-inner">
+      <p class="kicker">The journey itself</p>
+      <h2 id="offer-title">Sacred Horizons: The Japan Experience</h2>
+      <ul class="facts">
+        <li><strong>14 nights</strong>, departing 7 April 2027</li>
+        <li>Four-day guided tour of <strong>Tokyo and the Mount Fuji region</strong>, including three hotel nights, followed by a 10-night cruise aboard <strong>MSC Bellissima</strong>.</li>
+        <li>Calling at Hiroshima, Kagoshima, Jeju Island, Sasebo and Kobe, with an overnight stay in Kobe</li>
+        <li>Six exclusive onboard presentations and workshops featuring <strong>Tracey Ash, Samantha Treasure, Peter Maloney and Kerrie Erwin</strong></li>
+        <li>Package includes advertised return flights from Sydney, accommodation, transfers, guided sightseeing, onboard meals, a drinks package and gratuities</li>
+        <li>Subscribers of The SIA Brat Studio, both free and paid, enjoy an exclusive <strong>A$200 per person discount</strong>, bringing the starting price to <strong>A$7,699 per person</strong>.</li>
+      </ul>
+      <div class="paths">
+        <div class="path">
+          <p class="path-q">Want to explore the journey?</p>
+          <a class="btn btn-line" href="https://www.cruiseaway.com.au/cruise/sacred-horizons-the-japan-experience-18760749?selectedSail=18429235&amp;filterParams%5BcabinKind%5D%5B0%5D=19" target="_blank" rel="noopener">Explore the regular Sacred Horizons itinerary on CruiseAway</a>
+        </div>
+        <div class="path">
+          <p class="path-q">Want the exclusive A$7,699 subscriber rate?</p>
+          <p class="path-text"><a href="https://thesiabrat.substack.com/p/japan-cruise-tour-mythology-dreams-self-psychic-abilities" target="_blank" rel="noopener">Read the full story on The SIA Brat Studio</a> and subscribe for free to unlock the special booking link.</p>
+          <p class="path-note">Both free and paid subscribers qualify for the A$200 per person saving.</p>
+        </div>
+      </div>
+      <p class="fine">Prices are per person, based on twin sharing, and subject to availability and booking conditions. This exclusive offer is available to free and paid subscribers of The SIA Brat Studio. Final prices, inclusions and conditions should be confirmed with CruiseAway.</p>
+      <p class="disclosure">I’m helping a friend spread the word about this cruise. There’s an exclusive discount for my readers, but I’m not being paid or earning a commission for writing about it.</p>
+    </div>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="https://thesiabrat.substack.com">The SIA Brat</a> · Sacred Horizons
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  // Gentle scroll reveal; content stays fully visible without JS or with reduced motion.
+  const reveals = document.querySelectorAll('.reveal');
+  // Only content below the first screen waits to fade in, so the opening view is always complete.
+  reveals.forEach(el => { if (el.getBoundingClientRect().top > window.innerHeight) el.classList.add('pending'); });
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in-view'));
+  }
+
+  // Progress marks follow the scene in the middle of the viewport.
+  const marks = [...document.querySelectorAll('.marks a')];
+  const scenes = [...document.querySelectorAll('.scene')];
+  function updateMarks() {
+    const mid = window.innerHeight * 0.5;
+    let current = -1;
+    scenes.forEach((s, i) => { if (s.getBoundingClientRect().top < mid) current = i; });
+    marks.forEach((m, i) => {
+      m.classList.toggle('current', i === current);
+      if (i === current) m.setAttribute('aria-current', 'step'); else m.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', updateMarks, { passive: true });
+  window.addEventListener('resize', updateMarks);
+  updateMarks();
+</script>
+</body>
+</html>
